@@ -5,6 +5,7 @@ Automatic translation of ASP.NET application
 
 1. Add Translator folder to project
 2. Add attribute to Controller to be translated:
+
     [TranslatorFilter]
     public class CommonController : Controller
     {
