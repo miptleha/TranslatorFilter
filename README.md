@@ -35,4 +35,3 @@ public class Global : System.Web.HttpApplication
 }
 ```
 
-Feel free to use TranslatorFilter in your projects :+1:
