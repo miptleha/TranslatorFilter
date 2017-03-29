@@ -1,0 +1,36 @@
+Home Page - My ASP.NET Application
+Application name
+Home
+About
+Contact
+Register
+Log in
+ASP.NET
+ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.
+Learn more »
+Getting started
+ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that              enables a clean separation of concerns and gives you full control over markup              for enjoyable, agile development.
+Get more libraries
+NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
+Web Hosting
+You can easily find a web hosting company that offers the right mix of features and price for your applications.
+© 2017 - My ASP.NET Application
+About - My ASP.NET Application
+About.
+Your application description page.
+Use this area to provide additional information.
+Contact - My ASP.NET Application
+Contact.
+Your contact page.
+One Microsoft Way
+Redmond, WA 98052-6399
+P:
+425.555.0100
+Support:
+Support@example.com
+Marketing:
+Marketing@example.com
+{"appName":"Firefox","requestId":"4eb8b74df5324e4c83ad4e06065497f8"}
+{"appName":"Firefox","requestId":"63aa3df8ae3f425d9a36ac5dab06305c"}
+{"appName":"Internet Explorer","requestId":"6b6a9d7d82d64287ae891059e0a0aacb"}
+{"appName":"Internet Explorer","requestId":"ef736b6cb9074f9a8d88d4097877a5e4"}

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace osai.Code.Translator
+namespace Translator
 {
     public class TranslatorParser
     {
@@ -48,14 +48,29 @@ namespace osai.Code.Translator
         }
 
         //parse html
-        public void FindTextHtml(string html, List<string> list)
+        public string FindTextHtml(string html, List<string> list)
         {
-            var ms = Regex.Matches(html, @">([^<>]*)<", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            var ms = Regex.Matches(html, @">([^<>]+)<", RegexOptions.IgnoreCase | RegexOptions.Multiline);
+            List<string> badStrings = new List<string>();
             foreach (Match m in ms)
             {
                 var text = m.Groups[1].Value;
+                text = text.Replace('\r', ' ').Replace('\n', ' ').Trim();
+                if (text.Length == 0)
+                    continue;
                 list.Add(text);
             }
+
+            string htmlNew = Regex.Replace(html, @">([^<>]+)<", delegate (Match m)
+                {
+                    var text = m.Groups[1].Value;
+                    text = text.Replace('\r', ' ').Replace('\n', ' ').Trim();
+                    if (text.Length == 0)
+                        return m.Groups[0].Value;
+                    return ">#(#" + text + "#)#<";
+                }, RegexOptions.IgnoreCase | RegexOptions.Multiline);
+
+            return htmlNew;
         }
 
         //decode, remove dublicates and empties

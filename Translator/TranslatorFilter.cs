@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace osai.Code.Translator
+namespace Translator
 {
     public class TranslatorFilter : ActionFilterAttribute, IResultFilter
     {

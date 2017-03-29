@@ -9,7 +9,7 @@ using System.Web.Hosting;
 using System.Xml;
 using System.Xml.XPath;
 
-namespace osai.Code.Translator
+namespace Translator
 {
     public class XmlDictionary
     {
@@ -26,6 +26,7 @@ namespace osai.Code.Translator
                 if (!string.IsNullOrWhiteSpace(_ht[s]) && _ht[s] != s)
                     text = Replace(text, s);
             }
+            text = text.Replace("#(#", "").Replace("#)#", "");
 
             //add strings to file (if not added)
             foreach (var s in list)
@@ -41,7 +42,7 @@ namespace osai.Code.Translator
         {
             string sNew = Get(key);
             if (sNew != null && sNew != key)
-                text = text.Replace(key, sNew);
+                text = text.Replace("#(#" + key + "#)#", sNew);
             return text;
         }
 
@@ -61,8 +62,8 @@ namespace osai.Code.Translator
                     break;
                 }
             }
-            if (!found)
-                return null; //comment here if want parse all strings, not only russian
+            //if (!found)
+            //    return null; //comment here if want parse all strings, not only with _chars
 
             if (!_ht.ContainsKey(s))
             {
@@ -97,7 +98,7 @@ namespace osai.Code.Translator
                 var listTranslated = ReadFile(pathTranslated);
                 for (int i = 0; i < listOriginal.Count; i++)
                 {
-                    if (listTranslated.Count > i)
+                    if (listTranslated.Count > i && !string.IsNullOrEmpty(listOriginal[i]))
                         _ht.Add(listOriginal[i], listTranslated[i]);
                 }
             }

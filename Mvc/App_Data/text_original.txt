@@ -1,0 +1,47 @@
+Home Page - My ASP.NET Application
+Application name
+Home
+About
+Contact
+Register
+Log in
+ASP.NET
+ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.
+Learn more »
+Getting started
+ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that              enables a clean separation of concerns and gives you full control over markup              for enjoyable, agile development.
+Get more libraries
+NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
+Web Hosting
+You can easily find a web hosting company that offers the right mix of features and price for your applications.
+© 2017 - My ASP.NET Application
+About - My ASP.NET Application
+About.
+Your application description page.
+Use this area to provide additional information.
+Contact - My ASP.NET Application
+Contact.
+Your contact page.
+One Microsoft Way
+Redmond, WA 98052-6399
+P:
+425.555.0100
+Support:
+Support@example.com
+Marketing:
+Marketing@example.com
+{"appName":"Internet Explorer","requestId":"699f7b826b11448ab4c6f01517b01397"}
+{"appName":"Internet Explorer","requestId":"8add8efaebf54829a758076d882258b3"}
+{"appName":"Internet Explorer","requestId":"bf3ceb1b8beb4a859b97c9a97156dfdb"}
+{"appName":"Internet Explorer","requestId":"4e2fc8ecffc34ff59dd8efee39fb90dc"}
+{"appName":"Firefox","requestId":"41a379e854d84021bcfbfaec92955a2a"}
+{"appName":"Firefox","requestId":"47168f7c41d440369dad1894ac8f5e16"}
+{"appName":"Firefox","requestId":"477e88d1081241bc81490ebba7c16ef7"}
+{"appName":"Firefox","requestId":"6c9003906977427db2d543fc39e5fda5"}
+{"appName":"Firefox","requestId":"e251b40a83564c8faec885ecbacb88c5"}
+{"appName":"Firefox","requestId":"379540aa1202407ab8bedd5c8a9a425e"}
+{"appName":"Firefox","requestId":"32db726c7fba4eb5ab08230161d489b0"}
+{"appName":"Firefox","requestId":"5ef5255bb5824bf291449a1fd7f3ff3e"}
+{"appName":"Firefox","requestId":"609a4eec3dad44a9914094d2a7706769"}
+{"appName":"Firefox","requestId":"0da7f0ae451743d8a425046667ddffcb"}
+{"appName":"Firefox","requestId":"c27ac3f865d3423294c0d4083ff0b6e0"}

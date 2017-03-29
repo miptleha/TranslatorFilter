@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace osai.Code.Translator
+namespace Translator
 {
     public class TranslatorFilterStream : Stream
-    // This filter changes all characters passed through it to uppercase.
     {
         List<byte> tmpBuffer = new List<byte>();
         private Stream strSink;
@@ -66,33 +65,38 @@ namespace osai.Code.Translator
             return strSink.Read(buffer, offset, count);
         }
 
+        bool _wasFlush = false;
+
         public override void Write(byte[] buffer, int offset, int count)
         {
             byte[] data = new byte[count];
             Buffer.BlockCopy(buffer, offset, data, 0, count);
             tmpBuffer.AddRange(data);
+            string html = Encoding.UTF8.GetString(tmpBuffer.ToArray());
+            _wasFlush = false;
         }
 
         public override void Flush()
         {
-            //string html = "<div><div>text1</div>text2</div>";
-            //string html = "<nav class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\" style=\"margin-bottom: 0\"><div class=\"navbar-header\"><div id=\"header-logo\" title=\"НА ВНЕШНИЙ ПОРТАЛ АСУ ТК\"><img src=\"/Images/arm.png\" /></div><div id=\"header-title\">Информационно-аналитическая система регулирования на транспорте<br /><span class=\"sub-title1\">Подсистема обеспечения справочной и аналитической информацией</span><br /><span class=\"sub-title2\">АРМ Аналитика</span></div><div id=\"header-right\"><div id=\"header-usericon\">Аналитик<br/><a href=\"http://localhost:55747/\" title=\"НА ВНУТРЕННИЙ ПОРТАЛ АСУ ТК\">ВЫХОД В ЛИЧНЫЙ КАБИНЕТ</a></div></div></div></nav>";
-            //string html = "[[{\"a\":[\"b\"]}, \"c\":\"d\", [1, \"e\"]], [{\"a\":[\"b2\"]}, \"c\":\"d2\", [1, \"e2\"]]]";
-            string html = Encoding.UTF8.GetString(tmpBuffer.ToArray());
+            if (!_wasFlush)
+            {
+                string html = Encoding.UTF8.GetString(tmpBuffer.ToArray());
 
-            var tp = new TranslatorParser();
-            var list = new List<string>();
-            if (html.Length > 0 && (html[0] == '{' || html[0] == '['))
-                tp.FindTextJson(html, list);
-            else
-                tp.FindTextHtml(html, list);
-            list = tp.FilterText(list);
+                var tp = new TranslatorParser();
+                var list = new List<string>();
+                if (html.Length > 0 && (html[0] == '{' || html[0] == '['))
+                    tp.FindTextJson(html, list);
+                else
+                    html = tp.FindTextHtml(html, list);
+                list = tp.FilterText(list);
 
-            var dict = new XmlDictionary();
-            string htmlNew = dict.Replace(html, list);
+                var dict = new XmlDictionary();
+                string htmlNew = dict.Replace(html, list);
 
-            var data = Encoding.UTF8.GetBytes(htmlNew);
-            strSink.Write(data, 0, data.Length);
+                var data = Encoding.UTF8.GetBytes(htmlNew);
+                strSink.Write(data, 0, data.Length);
+                _wasFlush = true;
+            }
             strSink.Flush();
         }
     }
